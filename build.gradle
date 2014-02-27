@@ -1,0 +1,30 @@
+/**
+ * Build for Fabric3 Gradle examples
+ */
+project.description = 'Fabric3 Gradle plugin samples'
+
+defaultTasks 'clean', 'assemble', 'install'
+
+allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    group = 'org.codehaus.fabric3.gradle'
+
+    dependencies {
+
+        testCompile 'junit:junit:4.5'
+    }
+
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.11'
+}
