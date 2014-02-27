@@ -1,6 +1,6 @@
 apply plugin: 'fabric3-assembly'
 
-// force dependencies
+// force dependencies to be built prior to this project
 dependencies {
     compile project(':services')
 //    compile project(':webapp')
@@ -19,14 +19,21 @@ buildscript {
 
 fabric3Assembly {
 
-    profile group: 'org.codehaus.fabric3', name: 'profile-timer', version: fabric3Version
+    // Configure the runtime with profiles. Extensions can also be configured using the 'extension' convention.
+    profile group: 'org.codehaus.fabric3', name: 'profile-jeromq', version: fabric3Version
     profile group: 'org.codehaus.fabric3', name: 'profile-rs', version: fabric3Version
     profile group: 'org.codehaus.fabric3', name: 'profile-web', version: fabric3Version
 
+    // Add the services project as a contribution
     contribution project(':services')
 
+    // Demonstrates how to remove an extension. Removes the web binding, which is included in the web profile.
     exclude group: 'org.codehaus.fabric3', name: 'fabric3-binding-web', version: fabric3Version
 
-//    configFile source: 'src/main/resources/systemConfig.xml', target: 'runtimes/vm/config'
+    // Overlay the standard runtime configuration with a custom one. Note 'target' is optional; if it is not specified, runtimes/<runtime>/config will be used.
+    configFile source: 'src/main/resources/systemConfig.xml', target: 'runtimes/vm/config'
+
+    // Remove standard runtime configurations other than the default VM configuration (i.e. controller, participant, node)
+    clean true
 
 }
