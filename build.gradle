@@ -3,7 +3,7 @@
  */
 project.description = 'Fabric3 Gradle plugin samples'
 
-defaultTasks 'clean', 'assemble', 'install'
+defaultTasks 'clean', 'fabric3Assembly', 'assemble'
 
 allprojects {
     repositories {
@@ -16,11 +16,12 @@ allprojects {
 subprojects {
     apply plugin: 'java'
 
-    group = 'org.codehaus.fabric3.gradle'
+    group = 'org.codehaus.fabric3.gradle.samples'
 
     dependencies {
 
         testCompile 'junit:junit:4.5'
+        testCompile group: 'org.codehaus.fabric3', name: 'fabric3-junit-api', version: fabric3Version
     }
 
 }

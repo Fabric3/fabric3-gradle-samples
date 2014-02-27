@@ -1,0 +1,32 @@
+apply plugin: 'fabric3-assembly'
+
+// force dependencies
+dependencies {
+    compile project(':services')
+//    compile project(':webapp')
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.codehaus.fabric3.gradle', name: 'fabric3-assembly', version: fabric3Version
+    }
+
+}
+
+fabric3Assembly {
+
+    profile group: 'org.codehaus.fabric3', name: 'profile-timer', version: fabric3Version
+    profile group: 'org.codehaus.fabric3', name: 'profile-rs', version: fabric3Version
+    profile group: 'org.codehaus.fabric3', name: 'profile-web', version: fabric3Version
+
+    contribution project(':services')
+
+    exclude group: 'org.codehaus.fabric3', name: 'fabric3-binding-web', version: fabric3Version
+
+//    configFile source: 'src/main/resources/systemConfig.xml', target: 'runtimes/vm/config'
+
+}
