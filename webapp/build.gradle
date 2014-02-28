@@ -1,0 +1,39 @@
+apply plugin: 'fabric3-packager'
+
+
+dependencies {
+
+    compile group: 'org.codehaus.fabric3.spec', name: 'sca-api', version: '1.1.4'
+    compile group: 'org.codehaus.fabric3', name: 'fabric3-api', version: fabric3Version
+    compile group: 'org.codehaus.fabric3', name: 'fabric3-binding-zeromq-api', version: fabric3Version
+
+    compile group: 'org.codehaus.fabric3', name: 'fabric3-node-api', version: fabric3Version
+
+    // the packager plugin adds a 'provided compile' scope that places dependencies on the compile classpath but does not include them in the WAR
+    providedCompile group: 'org.eclipse.jetty.orbit', name: 'javax.servlet', version: '3.0.0.v201112011016'
+
+    // the services project will be included in WEB-INF/lib
+    compile project(':services')
+}
+
+fabric3Packager {
+
+    // Configure the runtime with profiles. Extensions can also be configured using the 'extension' convention.
+    profile group: 'org.codehaus.fabric3', name: 'profile-jeromq', version: fabric3Version
+
+}
+
+buildscript {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath group: 'org.codehaus.fabric3.gradle', name: 'fabric3-packager', version: fabric3Version
+    }
+
+}
+
+
+
+

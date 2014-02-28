@@ -1,3 +1,3 @@
 rootProject.name = 'fabric3-gradle-samples'
 
-include ':services', ':distribution'
+include ':services', ':distribution', ':webapp'

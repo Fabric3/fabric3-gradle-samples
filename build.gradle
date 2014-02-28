@@ -3,7 +3,7 @@
  */
 project.description = 'Fabric3 Gradle plugin samples'
 
-defaultTasks 'clean', 'test', 'fabric3Assembly', 'fabric3Test', 'assemble'
+defaultTasks 'clean', 'test', 'fabric3Assembly', 'fabric3Test', 'fabric3Contribution', 'assemble', 'fabric3Packager'
 
 allprojects {
     repositories {
