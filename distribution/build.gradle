@@ -3,7 +3,6 @@ apply plugin: 'fabric3-assembly'
 // force dependencies to be built prior to this project
 dependencies {
     compile project(':services')
-//    compile project(':webapp')
 }
 
 buildscript {
