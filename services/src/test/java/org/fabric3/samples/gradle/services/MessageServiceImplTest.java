@@ -37,19 +37,22 @@
 */
 package org.fabric3.samples.gradle.services;
 
-import org.fabric3.api.annotation.model.Component;
-import org.fabric3.api.binding.zeromq.annotation.ZeroMQ;
-import org.oasisopen.sca.annotation.Scope;
+import org.fabric3.api.implementation.junit.Fabric3Runner;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.oasisopen.sca.annotation.Reference;
 
 /**
- * A message service that exposes a ZeroMQ endpoint.
+ * Test client for the ZeroMQ message service. This test will be run in-container and invoke the message service using ZeroMQ.
  */
-@ZeroMQ
-@Scope("COMPOSITE")
-@Component(name = "MessageService")
-public class MessageServiceImpl implements MessageService {
+@RunWith(Fabric3Runner.class)
+public class MessageServiceImplTest {
 
-    public void invoke(String message) {
+    @Reference
+    protected MessageService messageService;
 
+    @Test
+    public void testInvocation() throws Exception {
+        messageService.invoke("test");
     }
 }

@@ -38,9 +38,10 @@
 package org.fabric3.samples.gradle.services;
 
 /**
- *
+ * A message service.
  */
 public interface MessageService {
 
+    void invoke(String message);
 
 }

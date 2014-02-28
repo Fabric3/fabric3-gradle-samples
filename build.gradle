@@ -1,9 +1,9 @@
 /**
- * Build for Fabric3 Gradle examples
+ * Build for Fabric3 Gradle examples.
  */
 project.description = 'Fabric3 Gradle plugin samples'
 
-defaultTasks 'clean', 'fabric3Assembly', 'assemble'
+defaultTasks 'clean', 'test', 'fabric3Assembly', 'fabric3Test', 'assemble'
 
 allprojects {
     repositories {
