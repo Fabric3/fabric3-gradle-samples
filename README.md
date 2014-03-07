@@ -9,7 +9,7 @@ Building the Source
 
 Requirements are JDK 7.
 
-To build the source, execute the Gradle script, e.g.: *./gradlew* (\*Nix) or *gradle* (Windows)
+To build the source, execute the Gradle script, e.g.: *./gradlew* (\*Nix) or *gradlew* (Windows)
 
 
 Projects
